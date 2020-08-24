@@ -1,0 +1,71 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block title %}
+    Checkout
+{% endblock title%}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-6" id="form-wrapper">
+            <div class="box-element">
+                <form action="" id="form">
+                    <div id="user-info">
+                        <div required class="form-field"><input class="form-control" type="text" name="name" placeholder="Name..."></div>
+                        <div required class="form-field"><input class="form-control" type="text" name="email" placeholder="Email..."></div>
+                    </div>
+                    
+                    <div id="shipping-info">
+                        <hr>
+                            <p>shipping Information</p>
+                        <hr>
+                        <div class="form-field">
+                            <input type="text" class="form-control" name="address" placeholder="Address...">
+                        </div>
+
+                        <div class="form-field">
+                            <input type="text" class="form-control" name="city" placeholder="City...">
+                        </div>
+
+                        <div class="form-field">
+                            <input type="text" class="form-control" name="state" placeholder="State...">
+                        </div>
+
+                        <div class="form-field">
+                            <input type="text" class="form-control" name="zipcode" placeholder="Zip Code...">
+                        </div>
+
+                        <div class="form-field">
+                            <input type="text" class="form-control" name="country" placeholder="Country...">
+                        </div>
+
+                    </div>
+
+                    <hr>
+                    <input id="form-button" class=" btn btn-success btn-block" type="submit" value="Continue">
+                </form>
+            </div>
+            <br>
+            <div class="box-element hidden" id="payment-info">
+                <small>Paypal options</small>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="box-element">
+                <a href="{% url 'cart' %}" class="btn btn-outline-dark">&#x2190; Back to Cart</a>
+                <hr>
+                <h3>Order Summary</h3>
+                <hr>
+                <div class="cart-row">
+                    <div style="flex: 2"><img src="{% static 'images/bee.png' %}" alt="" class="row-image"></div>
+                    <div style="flex: 2">Product 1</div>
+                    <div style="flex: 1">$20</div>
+                    <div style="flex: 1">x2</div>
+                </div>
+                <h5>Items: 2</h5>
+                <h5>Total: $40</h5>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    
