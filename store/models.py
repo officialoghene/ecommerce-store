@@ -76,6 +76,17 @@ class Order(models.Model):
         orderitems = self.orderitem_set.all()
         total = sum([item.quantity for item in orderitems])
         return total
+    
+
+    @property
+    def shipping(self):
+        shipping = False
+        orderitems = self.orderitem_set.all()
+        for i in orderitems:
+            if i.product.digital == False:
+                shipping = True 
+        return shipping
+        
 
 class OrderItem(models.Model):
     """Model definition for OrderItem."""
@@ -110,6 +121,7 @@ class ShippingAddress(models.Model):
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null= True)
     address = models.CharField(null=True, max_length=200)
     city = models.CharField(null=True, max_length=200)
+    state = models.CharField(null=True, max_length=200)
     zipcode = models.CharField(null=True, max_length=200)
     date_added = models.DateTimeField(auto_now_add=True)
 
